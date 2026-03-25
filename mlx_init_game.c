@@ -1,25 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_init_game.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asgalean <asgalean@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/25 20:08:12 by asgalean          #+#    #+#             */
+/*   Updated: 2026/03/25 20:08:15 by asgalean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int validate_mlx(t_game *game, t_fd *fd)
+static int	texture_loading(t_game *game, t_fd *fd)
 {
-	if (!(game->mlx = mlx_init(RES_WIDTH, RES_HEIGHT, "CUB3D", true)))
-	{
-		puts(mlx_strerror(mlx_errno));
-		return(1);
-	}
-	if (!(game->img = mlx_new_image(game->mlx, RES_WIDTH, RES_HEIGHT)))
-	{
-		mlx_close_window(game->mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(1);
-	}
-	if (mlx_image_to_window(game->mlx, game->img, 0, 0) == -1)
-	{
-		mlx_close_window(game->mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(1);
-	}
-	//textures
 	game->text_n = mlx_load_png(fd->no_texture);
 	if (!game->text_n)
 	{
@@ -45,4 +39,39 @@ int validate_mlx(t_game *game, t_fd *fd)
 		return (1);
 	}
 	return (0);
+}
+
+int	validate_mlx(t_game *game, t_fd *fd)
+{
+	if (!(game->mlx = mlx_init(RES_WIDTH, RES_HEIGHT, "CUB3D", true)))
+	{
+		puts(mlx_strerror(mlx_errno));
+		return(1);
+	}
+	if (!(game->img = mlx_new_image(game->mlx, RES_WIDTH, RES_HEIGHT)))
+	{
+		mlx_close_window(game->mlx);
+		puts(mlx_strerror(mlx_errno));
+		return(1);
+	}
+	if (mlx_image_to_window(game->mlx, game->img, 0, 0) == -1)
+	{
+		mlx_close_window(game->mlx);
+		puts(mlx_strerror(mlx_errno));
+		return(1);
+	}
+	if(texture_loading(game, fd) == 1)
+		return (1);
+	return (0);
+}
+
+void	clean_and_close(t_game *data)
+{
+	mlx_close_window(data->mlx);
+	//mlx_delete_image(data->mlx, data->img);
+	//mlx_delete_texture(data->text_n);
+	//mlx_delete_texture(data->text_s);
+	//mlx_delete_texture(data->text_e);
+	//mlx_delete_texture(data->text_w);
+	//mlx_terminate(data->mlx);
 }

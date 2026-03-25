@@ -24,8 +24,10 @@ SRC			= main.c \
 			  get_next_line.c \
 			  get_next_line_utils.c \
 			  mlx_init_game.c \
-			  mlx_loop.c \
+			  loop_func.c \
+			  hook.c \
 			  ray_casting.c \
+			  ray_collision.c \
 
 OBJ			= $(SRC:.c=.o)
 

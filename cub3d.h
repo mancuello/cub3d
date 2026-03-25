@@ -27,7 +27,7 @@
 # define EAST 0
 # define WEST PI
 # define ANGLE_TO_RADIAN 0.0174533
-# define MAX_RAY_ITERATION 10
+# define MAX_RAY_ITERATION 1000
 # define FOV 60
 
 # include <stdlib.h>
@@ -38,6 +38,22 @@
 # include <math.h>
 # include "MLX/include/MLX42/MLX42.h"
 # include "libft/libft.h"
+
+typedef struct s_pixel_col
+{
+	int			tex_x;
+	int			wall_size;
+	int			real_wall_size;
+	int			top;
+	int			draw_start;
+	int			draw_end;
+	double		tex_pos_start;
+	double		tex_pos;
+	int			tex_y;
+	int			idx;
+	uint32_t	color;
+
+}	t_pixel_col;
 
 typedef struct s_map
 {
@@ -69,6 +85,7 @@ typedef struct s_player
 	double	y;
 	double	x;
 	double	angle;
+	double	speed;
 }	t_player;
 
 typedef struct s_game
@@ -110,7 +127,12 @@ int		set_game(t_fd *fd, t_game *game);
 int		ft_error(char *str);
 
 void	loop_func(void *param);
-int		validate_mlx(t_game *game, t_fd *fd);
+void	ft_hook(t_game *data);
+double	v_collision(double angle, t_game *data, t_ray *v_ray);
+double	h_collision(double angle, t_game *data, t_ray *h_ray);
 t_ray	cast_ray(double angle, t_game *data);
+
+int		validate_mlx(t_game *game, t_fd *fd);
+void	clean_and_close(t_game *data);
 
 #endif

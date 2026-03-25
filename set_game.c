@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asgalean <asgalean@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:51:59 by mcuello           #+#    #+#             */
-/*   Updated: 2026/03/25 16:09:22 by mcuello          ###   ########.fr       */
+/*   Updated: 2026/03/25 19:57:20 by asgalean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,25 @@ static int	rgb_to_pixel(char *rgb, uint32_t *color)
 	return (0);
 }
 
+static double	direction_selector(t_map *map)
+{
+	if (map->map[map->pos_y][map->pos_x] == 'N')
+		return (90.05);
+	if (map->map[map->pos_y][map->pos_x] == 'S')
+		return (270.05);
+	if (map->map[map->pos_y][map->pos_x] == 'E')
+		return (0.05);
+	if (map->map[map->pos_y][map->pos_x] == 'W')
+		return (180.05);
+	return (90.05);
+}
+
 int	set_game(t_fd *fd, t_game *game)
 {
 	game->player.x = fd->map->pos_x + 0.5;
 	game->player.y = fd->map->pos_y + 0.5;
-	game->player.angle = 90.05;
+	game->player.angle = direction_selector(fd->map);
+	game->player.speed = 0.1;
 	game->map = fd->map;
 	if (rgb_to_pixel(fd->ceiling_color, &game->ceiling) == -1)
 		return (ft_error("Error en el color rgb"), -1);
