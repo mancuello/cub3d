@@ -1,4 +1,4 @@
-# cub3D
+# Cub3D
 
 *This project has been created as part of the 42 curriculum by mcuello and asgalean.*
 
