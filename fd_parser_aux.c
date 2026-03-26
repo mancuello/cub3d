@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:21:31 by mcuello           #+#    #+#             */
-/*   Updated: 2026/03/25 16:13:23 by mcuello          ###   ########.fr       */
+/*   Updated: 2026/03/26 23:25:29 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,19 @@ void	get_rgb(char *line, t_fd *fd_data)
 		i++;
 	if (i != 2)
 		return ;
-	if (arr[0][0] == 'F' && ft_strlen(arr[0]) == 1 && !fd_data->floor_color)
+	if (arr[0][0] == 'F' && ft_strlen(arr[0]) == 1)
 	{
-		fd_data->floor_color = ft_strdup(arr[1]);
+		if (!fd_data->floor_color)
+			fd_data->floor_color = ft_strdup(arr[1]);
 		fd_data->elements++;
 	}
-	else if (arr[0][0] == 'C' && ft_strlen(arr[0]) == 1
-		&& !fd_data->ceiling_color)
+	else if (arr[0][0] == 'C' && ft_strlen(arr[0]) == 1)
 	{
-		fd_data->ceiling_color = ft_strdup(arr[1]);
+		if (!fd_data->ceiling_color)
+			fd_data->ceiling_color = ft_strdup(arr[1]);
 		fd_data->elements++;
 	}
-	free_map(arr);
-	free(line);
-	return ;
+	return (free_map(arr), free(line));
 }
 
 static void	assign_we(char **arr, t_fd *fd_data)
