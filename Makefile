@@ -6,11 +6,11 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 21:31:23 by mcuello           #+#    #+#              #
-#    Updated: 2026/03/25 15:24:27 by mcuello          ###   ########.fr        #
+#    Updated: 2026/03/28 19:05:35 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= cub3d
+NAME		= cub3D
 
 SRC			= main.c \
 			  extension_rules.c \
@@ -35,11 +35,11 @@ CC			= cc
 
 CFLAGS		= -Wall -Wextra -Werror -g -Iinclude -Imlx -Ilibft
 
-MLX_DIR		= MLX
+MLX_DIR		= MLX42
 
 MLX_LIB		= $(MLX_DIR)/build/libmlx42.a
 
-MLX_FLAGS	= -LMLX/build -lmlx42 -ldl -lglfw -pthread -lm
+MLX_FLAGS	= -LMLX42/build -lmlx42 -ldl -lglfw -pthread -lm
 
 MLX_INC		= -I$(MLX_DIR)/include
 

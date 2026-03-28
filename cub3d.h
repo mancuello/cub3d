@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 16:03:45 by mcuello           #+#    #+#             */
-/*   Updated: 2026/03/25 16:08:26 by mcuello          ###   ########.fr       */
+/*   Updated: 2026/03/28 19:32:38 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <math.h>
-# include "MLX/include/MLX42/MLX42.h"
+# include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 
 typedef struct s_pixel_col
@@ -121,7 +121,7 @@ int		is_valid_map(t_map *map);
 void	free_fd(t_fd *fd_data);
 void	free_map(char **map);
 char	**map_copy(t_map *map);
-int		flood_fill(char **map, int x, int y);
+int		flood_fill(t_map *map, char **mapp, int x, int y);
 int		set_game(t_fd *fd, t_game *game);
 
 int		ft_error(char *str);

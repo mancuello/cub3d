@@ -6,26 +6,28 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:02:28 by mcuello           #+#    #+#             */
-/*   Updated: 2026/03/25 16:02:01 by mcuello          ###   ########.fr       */
+/*   Updated: 2026/03/28 19:32:24 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	flood_fill(char **map, int x, int y)
+int	flood_fill(t_map *map, char **mapp, int x, int y)
 {
-	if (map[y][x] == ' ' || map[y][x] == '\0')
+	if (x < 0 || y < 0 || y >= map->height || x >= map->width)
 		return (-1);
-	if (map[y][x] == 'X' || map[y][x] == '1')
+	if (mapp[y][x] == ' ' || mapp[y][x] == '\0')
+		return (-1);
+	if (mapp[y][x] == 'X' || mapp[y][x] == '1')
 		return (0);
-	map[y][x] = 'X';
-	if (flood_fill(map, x + 1, y) == -1)
+	mapp[y][x] = 'X';
+	if (flood_fill(map, mapp, x + 1, y) == -1)
 		return (-1);
-	if (flood_fill(map, x - 1, y) == -1)
+	if (flood_fill(map, mapp, x - 1, y) == -1)
 		return (-1);
-	if (flood_fill(map, x, y + 1) == -1)
+	if (flood_fill(map, mapp, x, y + 1) == -1)
 		return (-1);
-	if (flood_fill(map, x, y - 1) == -1)
+	if (flood_fill(map, mapp, x, y - 1) == -1)
 		return (-1);
 	return (0);
 }

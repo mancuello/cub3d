@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 15:35:07 by mcuello           #+#    #+#             */
-/*   Updated: 2026/03/25 16:01:46 by mcuello          ###   ########.fr       */
+/*   Updated: 2026/03/28 19:32:53 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	is_valid_map(t_map *map)
 	cp_map = map_copy(map);
 	if (!cp_map)
 		return (ft_error("Error: fallo en map_copy\n"), -1);
-	if (flood_fill(cp_map, map->pos_x, map->pos_y) == -1)
+	if (flood_fill(map, cp_map, map->pos_x, map->pos_y) == -1)
 	{
 		free_map(cp_map);
 		ft_error("Error: el mapa esta abierto.\n");
