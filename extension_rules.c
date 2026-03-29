@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:05:27 by mcuello           #+#    #+#             */
-/*   Updated: 2026/03/25 15:05:31 by mcuello          ###   ########.fr       */
+/*   Updated: 2026/03/29 21:14:18 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,20 @@
 
 int	check_extension(char *str)
 {
-	char	*extension;
-	size_t	i;
-	size_t	j;
+	char	*sub;
 
-	extension = ft_strdup(".cub");
-	if (str[0] == '\0')
+	if (ft_strlen(str) <= 4)
 		return (-1);
-	i = 0;
-	j = 0;
-	while (str[i])
+	if (str[ft_strlen(str) - 5] == '/')
+		return (-1);
+	sub = ft_substr(str, ft_strlen(str) - 4, 4);
+	if (!sub)
+		return (-1);
+	if (ft_strcmp(sub, ".cub"))
 	{
-		j = 0;
-		while (str[i] && str[i + j] && (str[i + j] == extension[j]))
-			j++;
-		if (j == 4 && str[i + j] == '\0')
-		{
-			free(extension);
-			if (j == ft_strlen(str))
-				return (-1);
-			return (0);
-		}
-		i++;
+		free(sub);
+		return (-1);
 	}
-	return (free(extension), -1);
+	free(sub);
+	return (0);
 }
