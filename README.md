@@ -26,13 +26,7 @@ Key features:
 ### Requirements
 
 - Linux (Ubuntu/Debian recommended)
-- `cmake` (for building MLX42)
-- `libglfw3-dev` and `libx11-dev`
-
-Install dependencies:
-```bash
-sudo apt-get install cmake libglfw3-dev libglfw3 libx11-dev libxext-dev
-```
+- The [MLX42](https://github.com/codam-coding-college/MLX42) graphics library cloned into the same directory as the project
 
 ### Compilation
 
@@ -127,7 +121,7 @@ All code was written, reviewed, and validated by the team.
 
 ## Notes
 
-The leaks showed when using valgrind are entirely due to the MLX.
+The leaks showed when using valgrind are entirely due to the MLX42.
 This can be checked by valgrind --leak-check=full --gen-suppressions=all ./cub3d maps/square_map.cub 2> raw.supp
 Then extract the {...} blocks from raw.supp using the following Python script:
 
