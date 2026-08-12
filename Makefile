@@ -6,28 +6,28 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 21:31:23 by mcuello           #+#    #+#              #
-#    Updated: 2026/03/28 19:05:35 by mcuello          ###   ########.fr        #
+#    Updated: 2026/08/12 17:52:02 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3D
 
 SRC			= main.c \
-			  extension_rules.c \
-			  fd_reader.c \
-			  fd_parser.c \
-			  fd_parser_aux.c \
-			  fd_map_parser.c \
-			  map_validations.c \
-			  set_game.c \
-			  aux.c \
-			  get_next_line.c \
-			  get_next_line_utils.c \
-			  mlx_init_game.c \
-			  loop_func.c \
-			  hook.c \
-			  ray_casting.c \
-			  ray_collision.c \
+			  src/extension_rules.c \
+			  src/fd_reader.c \
+			  src/fd_parser.c \
+			  src/fd_parser_aux.c \
+			  src/fd_map_parser.c \
+			  src/map_validations.c \
+			  src/set_game.c \
+			  src/aux.c \
+			  src/get_next_line.c \
+			  src/get_next_line_utils.c \
+			  src/mlx_init_game.c \
+			  src/loop_func.c \
+			  src/hook.c \
+			  src/ray_casting.c \
+			  src/ray_collision.c \
 
 OBJ			= $(SRC:.c=.o)
 
@@ -59,7 +59,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -L$(LIB_DIR) -lft $(MLX_FLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Iinclude -Ilibft $(MLX_INC) -c $< -o $@
+	$(CC) $(CFLAGS) $(MLX_INC) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

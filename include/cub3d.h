@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 16:03:45 by mcuello           #+#    #+#             */
-/*   Updated: 2026/03/28 19:32:38 by mcuello          ###   ########.fr       */
+/*   Updated: 2026/08/12 18:02:47 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <math.h>
-# include "MLX42/include/MLX42/MLX42.h"
-# include "libft/libft.h"
+# include "MLX42/MLX42.h"
+# include "libft.h"
 
 typedef struct s_pixel_col
 {
